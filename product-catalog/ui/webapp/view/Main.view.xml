@@ -1,0 +1,25 @@
+<mvc:View xmlns:f="sap.f" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns:filterbar="sap.ui.comp.filterbar" controllerName="ui.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <smartfilterbar:SmartFilterBar 
+            id="smartfilter" 
+            entitySet="xALKxPRD_CATALOG_SRV"
+            enableBasicSearch="true"
+            basicSearchFieldName="prod_id"
+            showFilterConfiguration="false" filterContainerWidth="14rem">
+            <smartfilterbar:controlConfiguration>
+                <smartfilterbar:ControlConfiguration
+                    id="prod_name"
+                    index="0"
+                    key="prod_name"
+                    visibleInAdvancedArea="true">
+                    <smartfilterbar:customControl>
+                    <Input id="prod_id"></Input>
+                    </smartfilterbar:customControl>
+                </smartfilterbar:ControlConfiguration>
+            </smartfilterbar:controlConfiguration>
+        </smartfilterbar:SmartFilterBar>
+
+    </Page>
+</mvc:View>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="xALKxPRD_CATALOG_SRV_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="xALKxPRD_CATALOG_SRVType" sap:label="Product Catalog : CDS Service" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="prod_id"/>
+                </Key>
+                <Property Name="prod_id" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Count parameters"/>
+                <Property Name="prod_name" Type="Edm.String" MaxLength="40" sap:label="Product Name"/>
+                <Property Name="product_desc" Type="Edm.String" MaxLength="250" sap:label="Product Description"/>
+                <Property Name="sap_module" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="SAP Module"/>
+                <Property Name="sap_area" Type="Edm.String" MaxLength="40" sap:label="SAP Area"/>
+                <Property Name="sap_subarea" Type="Edm.String" MaxLength="40" sap:label="Sub-area" sap:quickinfo="SAP Sub-area"/>
+                <Property Name="practice_owner" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Practice Owner"/>
+                <Property Name="product_owner" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Product Owner"/>
+                <Property Name="product_type" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Product Type"/>
+                <Property Name="deployment_type" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Deployment Type"/>
+                <Property Name="product_readiness" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Product Readiness"/>
+                <Property Name="product_status" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Product Status"/>
+                <Property Name="pricing_plan" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Pricing Plan"/>
+                <Property Name="product_cost" Type="Edm.Decimal" Precision="28" Scale="6" sap:label="Product Cost"/>
+                <Property Name="prd_currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="development_cost" Type="Edm.Decimal" Precision="28" Scale="6" sap:label="Development Cost"/>
+                <Property Name="dev_currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="prj_status_assesment" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Assesment"/>
+                <Property Name="prj_status_design" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Design"/>
+                <Property Name="prj_status_implementation" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Implementation"/>
+                <Property Name="prj_status_go_live" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Go-Live"/>
+                <Property Name="prj_status_post_imp" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Post Go-Live"/>
+                <Property Name="is_consumer_prod" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Consumer Products"/>
+                <Property Name="is_milling_mining" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Milling and Mining"/>
+                <Property Name="is_automotive" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Automotive"/>
+                <Property Name="is_utilities" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Utilities"/>
+                <Property Name="is_public_sector" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Public Sector"/>
+                <Property Name="is_high_tech" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="High Tech"/>
+                <Property Name="is_engg_cons_ops" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Engg., Cons. &amp; Ops." sap:quickinfo="Engineering, Construction &amp; Operations"/>
+                <Property Name="is_oil_n_gas" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Oil and Gas"/>
+                <Property Name="is_life_sciences" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Life Sciences"/>
+                <Property Name="is_retail" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Retail"/>
+                <Property Name="is_telecommunications" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Telecommunications"/>
+                <Property Name="is_manufacturing" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Manufacturing"/>
+                <Property Name="is_healthcare" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Healthcare"/>
+                <Property Name="is_chemicals" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Chemicals"/>
+                <Property Name="is_freight_forwarding" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Freight Forwarding"/>
+                <Property Name="is_defense_and_security" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Defense and Security"/>
+                <Property Name="is_wholesale_distribution" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Wholesale Distributi" sap:quickinfo="Wholesale Distribution"/>
+                <Property Name="is_aerospace_and_defense" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Aerospace and Defens" sap:quickinfo="Aerospace and Defense"/>
+                <Property Name="is_food_and_beverage" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Food and Beverage"/>
+                <Property Name="is_bulk_comm_trading" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Bulk Commodity Tradi" sap:quickinfo="Bulk Commodity Trading"/>
+                <Property Name="client_list" Type="Edm.String" MaxLength="250" sap:label="Client List"/>
+            </EntityType>
+            <EntityContainer Name="xALKxPRD_CATALOG_SRV_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xALKxPRD_CATALOG_SRV" EntityType="xALKxPRD_CATALOG_SRV_CDS.xALKxPRD_CATALOG_SRVType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="xALKxPRD_CATALOG_SRV_CDS.xALKxPRD_CATALOG_SRV_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <atom:link rel="self" href="http://192.168.100.10:8000/sap/opu/odata/alk/PRD_CATALOG_SRV_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://192.168.100.10:8000/sap/opu/odata/alk/PRD_CATALOG_SRV_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

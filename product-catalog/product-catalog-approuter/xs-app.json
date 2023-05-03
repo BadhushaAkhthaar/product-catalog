@@ -1,0 +1,13 @@
+{
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "^/odata/(.*)$",
+      "target": "/sap/opu/odata/ALK/PRD_CATALOG_SRV_CDS/$1",
+      "destination": "S4P",
+      "csrfProtection": false,
+      "authenticationType": "xsuaa"
+    }
+  ],
+  "welcomeFile": "/uimodule"
+}
