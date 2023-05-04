@@ -1,25 +1,146 @@
-<mvc:View xmlns:f="sap.f" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns:filterbar="sap.ui.comp.filterbar" controllerName="ui.controller.Main"
+<mvc:View xmlns:f="sap.f" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:filterbar="sap.ui.comp.filterbar" controllerName="ui.controller.Main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:t="sap.ui.table">
     <Page id="page" title="{i18n>title}">
         <smartfilterbar:SmartFilterBar 
-            id="smartfilter" 
+            id="smartfilterID" 
             entitySet="xALKxPRD_CATALOG_SRV"
-            enableBasicSearch="true"
-            basicSearchFieldName="prod_id"
-            showFilterConfiguration="false" filterContainerWidth="14rem">
+            initialized="onFilterBarInit"
+            search="onSearch">
             <smartfilterbar:controlConfiguration>
                 <smartfilterbar:ControlConfiguration
-                    id="prod_name"
                     index="0"
                     key="prod_name"
+                    label="Product Name"
                     visibleInAdvancedArea="true">
                     <smartfilterbar:customControl>
-                    <Input id="prod_id"></Input>
+                        <Input id="prod_name" customData:key="prod_name" value="{catalog>/filters/prod_name/inputValue}" liveChange="onFilterInputChange"/>
+                    </smartfilterbar:customControl>
+                </smartfilterbar:ControlConfiguration>
+            </smartfilterbar:controlConfiguration>
+            <smartfilterbar:controlConfiguration>
+                <smartfilterbar:ControlConfiguration
+                    index="1"
+                    key="sap_module"
+                    label="SAP Module"
+                    visibleInAdvancedArea="true">
+                    <smartfilterbar:customControl>
+                        <MultiComboBox 
+                            id="sap_module"
+                            customData:key="sap_module"
+				            selectedKeys="{catalog>/filters/sap_module/selectedKeys}"
+                            selectionChange="onFilterComboChanged">
+                            <items>
+                                <core:Item key="01" text="Analytics"/>
+                                <core:Item key="02" text="BNL"/>
+                                <core:Item key="03" text="BTP"/>
+                                <core:Item key="04" text="EWM"/>
+                                <core:Item key="05" text="GTS"/>
+                                <core:Item key="06" text="IBP"/>
+                                <core:Item key="07" text="Others"/>
+                                <core:Item key="08" text="SCM"/>
+                                <core:Item key="09" text="TM"/>
+                            </items>
+                        </MultiComboBox>
+                    </smartfilterbar:customControl>
+                </smartfilterbar:ControlConfiguration>
+            </smartfilterbar:controlConfiguration>
+            <smartfilterbar:controlConfiguration>
+                <smartfilterbar:ControlConfiguration
+                    index="2"
+                    key="product_type"
+                    label="Product Type"
+                    visibleInAdvancedArea="true">
+                    <smartfilterbar:customControl>
+                        <MultiComboBox 
+                            id="product_type"
+				            selectedKeys="{catalog>/filters/product_type/selectedKeys}"
+                            customData:key="product_type"
+                            selectionChange="onFilterComboChanged">
+                            <items>
+                                <core:Item key="AC" text="Accelerator"/>
+                                <core:Item key="PR" text="Product"/>
+                                <core:Item key="SO" text="Solution"/>
+                            </items>
+                        </MultiComboBox>
+                    </smartfilterbar:customControl>
+                </smartfilterbar:ControlConfiguration>
+            </smartfilterbar:controlConfiguration>
+            <smartfilterbar:controlConfiguration>
+                <smartfilterbar:ControlConfiguration
+                    index="3"
+                    key="product_readiness"
+                    label="Product Readiness"
+                    visibleInAdvancedArea="true">
+                    <smartfilterbar:customControl>
+                        <MultiComboBox 
+                            id="product_readiness"
+				            selectedKeys="{catalog>/filters/product_readiness/selectedKeys}"
+                            customData:key="product_readiness"
+                            selectionChange="onFilterComboChanged">
+                            <items>
+                                <core:Item key="CO" text="Conceptual"/>
+                                <core:Item key="FR" text="Frame Work"/>
+                                <core:Item key="PC" text="POC"/>
+                                <core:Item key="FB" text="Fully Built"/>
+                            </items>
+                        </MultiComboBox>
+                    </smartfilterbar:customControl>
+                </smartfilterbar:ControlConfiguration>
+            </smartfilterbar:controlConfiguration>
+            <smartfilterbar:controlConfiguration>
+                <smartfilterbar:ControlConfiguration
+                    index="4"
+                    key="related_industry"
+                    label="Related Industry"
+                    customData:key="related_industry"
+                    visibleInAdvancedArea="true">
+                    <smartfilterbar:customControl>
+                        <MultiComboBox 
+                            id="related_industry"
+				            selectedKeys="{catalog>/filters/related_industry/selectedKeys}"
+                            selectionChange="onFilterIndustryChanged">
+                            <items>
+                                <core:Item key="is_consumer_prod" text="Consumer Products"/>
+                                <core:Item key="is_milling_mining" text="Milling and Mining"/>
+                                <core:Item key="is_automotive" text="Automotive"/>
+                                <core:Item key="is_utilities" text="Utilities"/>
+                                <core:Item key="is_public_sector" text="Public Sector"/>
+                                <core:Item key="is_high_tech" text="High Tech"/>
+                                <core:Item key="is_engg_cons_ops" text="Engineering, Construction and  Operations"/>
+                                <core:Item key="is_oil_n_gas" text="Oil and Gas"/>
+                                <core:Item key="is_life_sciences" text="Life Sciences"/>
+                                <core:Item key="is_retail" text="Retail"/>
+                                <core:Item key="is_telecommunications" text="Telecommunications"/>
+                                <core:Item key="is_manufacturing" text="Manufacturing"/>
+                                <core:Item key="is_healthcare" text="Healthcare"/>
+                                <core:Item key="is_chemicals" text="Chemicals"/>
+                                <core:Item key="is_freight_forwarding" text="Freight Forwarding"/>
+                                <core:Item key="is_defense_and_security" text="Defense and Security"/>
+                                <core:Item key="is_wholesale_distribution" text="Wholesale Distribution"/>
+                                <core:Item key="is_aerospace_and_defense" text="Aerospace and Defense"/>
+                                <core:Item key="is_food_and_beverage" text="Food and Beverage"/>
+                                <core:Item key="is_bulk_comm_trading" text="Bulk Commodity Trading"/>
+                                
+                            </items>
+                        </MultiComboBox>
                     </smartfilterbar:customControl>
                 </smartfilterbar:ControlConfiguration>
             </smartfilterbar:controlConfiguration>
         </smartfilterbar:SmartFilterBar>
-
+        <smartTable:SmartTable 
+            id="smartTable" 
+            entitySet="xALKxPRD_CATALOG_SRV" 
+            smartFilterId="smartfilterID"
+            header="Products" showRowCount="true" 
+            enableAutoBinding="false" tableType="ResponsiveTable"
+			requestAtLeastFields="prod_id,prod_name,product_desc,sap_module,sap_area,sap_subarea"
+			initiallyVisibleFields="prod_name,product_desc,sap_module,sap_area,sap_subarea">
+            <Table id="product-catalog" growing="true" mode="SingleSelectMaster" selectionChange="onSelect">
+            </Table>
+        </smartTable:SmartTable>
     </Page>
 </mvc:View>

@@ -1,0 +1,66 @@
+<mvc:View xmlns:f="sap.f"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:filterbar="sap.ui.comp.filterbar" controllerName="ui.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:m="sap.m"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:t="sap.ui.table">
+    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" showEditHeaderButton="false" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:HBox>
+                        <m:Title text="{prod_name}" wrapping="true"/>
+                    </m:HBox>
+                </expandedHeading>
+                <snappedHeading>
+                    <m:FlexBox fitContainer="true" alignItems="Center">
+                        <m:Title text="{prod_name}" wrapping="true"/>
+                    </m:FlexBox>
+                </snappedHeading>
+                <expandedContent>
+                    <m:GenericTag class="sstGenericTag" design="StatusIconHidden" status="Information" text="{sap_area}"/>
+                </expandedContent>
+                <snappedContent>
+                    <m:GenericTag class="sstGenericTag" design="StatusIconHidden" status="Information" text="{sap_area}"/>
+                </snappedContent>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+        <headerContent>
+            <m:FlexBox wrap="Wrap">
+                <layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Text text="{product_desc}"/>
+                </layout:HorizontalLayout>
+            </m:FlexBox>
+        </headerContent>
+        <sections>
+            <ObjectPageSection titleUppercase="false" id="product-detail" title="Details">
+                <subSections>
+                    <ObjectPageSubSection id="product-detail-s1">
+                        <blocks>
+                            <smartForm:SmartForm id="smartForm">
+                                <smartForm:Group>
+                                    <smartForm:GroupElement>
+                                        <smartField:SmartField value="{sap_module}" />
+                                    </smartForm:GroupElement>
+                                    <smartForm:GroupElement >
+                                        <smartField:SmartField value="{sap_area}" />
+                                    </smartForm:GroupElement>
+                                    <smartForm:GroupElement >
+                                        <smartField:SmartField value="{sap_subarea}" />
+                                    </smartForm:GroupElement>
+                                </smartForm:Group>
+                            </smartForm:SmartForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>
