@@ -1,38 +1,25 @@
-<mvc:View xmlns:f="sap.f" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:filterbar="sap.ui.comp.filterbar" controllerName="ui.controller.Main"
+<mvc:View xmlns:f="sap.f"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:filterbar="sap.ui.comp.filterbar" controllerName="ui.controller.Main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns:core="sap.ui.core"
     xmlns="sap.m"
     xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     xmlns:t="sap.ui.table">
     <Page id="page" title="{i18n>title}">
-        <smartfilterbar:SmartFilterBar 
-            id="smartfilterID" 
-            entitySet="xALKxPRD_CATALOG_SRV"
-            initialized="onFilterBarInit"
-            search="onSearch">
+        <smartfilterbar:SmartFilterBar id="smartfilterID" entitySet="xALKxPRD_CATALOG_SRV" initialized="onFilterBarInit" search="onSearch">
             <smartfilterbar:controlConfiguration>
-                <smartfilterbar:ControlConfiguration
-                    index="0"
-                    key="prod_name"
-                    label="Product Name"
-                    visibleInAdvancedArea="true">
+                <smartfilterbar:ControlConfiguration index="0" key="prod_name" label="Product Name" visibleInAdvancedArea="true">
                     <smartfilterbar:customControl>
                         <Input id="prod_name" customData:key="prod_name" value="{catalog>/filters/prod_name/inputValue}" liveChange="onFilterInputChange"/>
                     </smartfilterbar:customControl>
                 </smartfilterbar:ControlConfiguration>
             </smartfilterbar:controlConfiguration>
             <smartfilterbar:controlConfiguration>
-                <smartfilterbar:ControlConfiguration
-                    index="1"
-                    key="sap_module"
-                    label="SAP Module"
-                    visibleInAdvancedArea="true">
+                <smartfilterbar:ControlConfiguration index="1" key="sap_module" label="SAP Application" visibleInAdvancedArea="true">
                     <smartfilterbar:customControl>
-                        <MultiComboBox 
-                            id="sap_module"
-                            customData:key="sap_module"
-				            selectedKeys="{catalog>/filters/sap_module/selectedKeys}"
-                            selectionChange="onFilterComboChanged">
+                        <MultiComboBox id="sap_module" customData:key="sap_module" selectedKeys="{catalog>/filters/sap_module/selectedKeys}" selectionChange="onFilterComboChanged">
                             <items>
                                 <core:Item key="01" text="Analytics"/>
                                 <core:Item key="02" text="BNL"/>
@@ -49,17 +36,9 @@
                 </smartfilterbar:ControlConfiguration>
             </smartfilterbar:controlConfiguration>
             <smartfilterbar:controlConfiguration>
-                <smartfilterbar:ControlConfiguration
-                    index="2"
-                    key="product_type"
-                    label="Product Type"
-                    visibleInAdvancedArea="true">
+                <smartfilterbar:ControlConfiguration index="2" key="product_type" label="Product Type" visibleInAdvancedArea="true">
                     <smartfilterbar:customControl>
-                        <MultiComboBox 
-                            id="product_type"
-				            selectedKeys="{catalog>/filters/product_type/selectedKeys}"
-                            customData:key="product_type"
-                            selectionChange="onFilterComboChanged">
+                        <MultiComboBox id="product_type" selectedKeys="{catalog>/filters/product_type/selectedKeys}" customData:key="product_type" selectionChange="onFilterComboChanged">
                             <items>
                                 <core:Item key="AC" text="Accelerator"/>
                                 <core:Item key="PR" text="Product"/>
@@ -70,17 +49,9 @@
                 </smartfilterbar:ControlConfiguration>
             </smartfilterbar:controlConfiguration>
             <smartfilterbar:controlConfiguration>
-                <smartfilterbar:ControlConfiguration
-                    index="3"
-                    key="product_readiness"
-                    label="Product Readiness"
-                    visibleInAdvancedArea="true">
+                <smartfilterbar:ControlConfiguration index="3" key="product_readiness" label="Product Readiness" visibleInAdvancedArea="true">
                     <smartfilterbar:customControl>
-                        <MultiComboBox 
-                            id="product_readiness"
-				            selectedKeys="{catalog>/filters/product_readiness/selectedKeys}"
-                            customData:key="product_readiness"
-                            selectionChange="onFilterComboChanged">
+                        <MultiComboBox id="product_readiness" selectedKeys="{catalog>/filters/product_readiness/selectedKeys}" customData:key="product_readiness" selectionChange="onFilterComboChanged">
                             <items>
                                 <core:Item key="CO" text="Conceptual"/>
                                 <core:Item key="FR" text="Frame Work"/>
@@ -92,17 +63,9 @@
                 </smartfilterbar:ControlConfiguration>
             </smartfilterbar:controlConfiguration>
             <smartfilterbar:controlConfiguration>
-                <smartfilterbar:ControlConfiguration
-                    index="4"
-                    key="related_industry"
-                    label="Related Industry"
-                    customData:key="related_industry"
-                    visibleInAdvancedArea="true">
+                <smartfilterbar:ControlConfiguration index="4" key="related_industry" label="Related Industry" customData:key="related_industry" visibleInAdvancedArea="true">
                     <smartfilterbar:customControl>
-                        <MultiComboBox 
-                            id="related_industry"
-				            selectedKeys="{catalog>/filters/related_industry/selectedKeys}"
-                            selectionChange="onFilterIndustryChanged">
+                        <MultiComboBox id="related_industry" selectedKeys="{catalog>/filters/related_industry/selectedKeys}" customData:key="related_industry" selectionChange="onFilterIndustryChanged">
                             <items>
                                 <core:Item key="is_consumer_prod" text="Consumer Products"/>
                                 <core:Item key="is_milling_mining" text="Milling and Mining"/>
@@ -124,22 +87,60 @@
                                 <core:Item key="is_aerospace_and_defense" text="Aerospace and Defense"/>
                                 <core:Item key="is_food_and_beverage" text="Food and Beverage"/>
                                 <core:Item key="is_bulk_comm_trading" text="Bulk Commodity Trading"/>
-                                
+
+                            </items>
+                        </MultiComboBox>
+                    </smartfilterbar:customControl>
+                </smartfilterbar:ControlConfiguration>
+            </smartfilterbar:controlConfiguration>
+            <smartfilterbar:controlConfiguration>
+                <smartfilterbar:ControlConfiguration index="5" key="project_stage" label="Project Stage" customData:key="project_stage" visibleInAdvancedArea="true">
+                    <smartfilterbar:customControl>
+                        <MultiComboBox id="project_stage" selectedKeys="{catalog>/filters/project_stage/selectedKeys}" customData:key="project_stage" selectionChange="onFilterIndustryChanged">
+                            <items>
+                                <core:Item key="prj_status_assesment" text="Assesment"/>
+                                <core:Item key="prj_status_design" text="Design"/>
+                                <core:Item key="prj_status_implementation" text="Implementation"/>
+                                <core:Item key="prj_status_go_live" text="Go-Live"/>
+                                <core:Item key="prj_status_post_imp" text="Post Go-Live"/>
+
                             </items>
                         </MultiComboBox>
                     </smartfilterbar:customControl>
                 </smartfilterbar:ControlConfiguration>
             </smartfilterbar:controlConfiguration>
         </smartfilterbar:SmartFilterBar>
-        <smartTable:SmartTable 
-            id="smartTable" 
-            entitySet="xALKxPRD_CATALOG_SRV" 
-            smartFilterId="smartfilterID"
-            header="Products" showRowCount="true" 
-            enableAutoBinding="false" tableType="ResponsiveTable"
-			requestAtLeastFields="prod_id,prod_name,product_desc,sap_module,sap_area,sap_subarea"
-			initiallyVisibleFields="prod_name,product_desc,sap_module,sap_area,sap_subarea">
-            <Table id="product-catalog" growing="true" mode="SingleSelectMaster" selectionChange="onSelect">
+        <smartTable:SmartTable id="smartTable" entitySet="xALKxPRD_CATALOG_SRV" smartFilterId="smartfilterID" header="Products" showRowCount="true" enableAutoBinding="false" tableType="ResponsiveTable" requestAtLeastFields="prod_id,prod_name,product_desc,sap_module,sap_area,sap_subarea" >
+            <Table id="product-catalog" growing="true">
+                <columns>
+                    <Column id="cprod_name">
+                        <Text text="Product Name" />
+                    </Column>
+                    <Column id="cprod_desc">
+                        <Text text="Product Description" />
+                    </Column>
+                    <Column id="csap_app">
+                        <Text text="SAP Application" />
+                    </Column>
+                    <Column id="csap_process">
+                        <Text text="Business Process" />
+                    </Column>
+                    <Column id="csub_process">
+                        <Text text="Sub Process" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="idWorkListItem" type="Navigation" press="onSelect">
+                        <cells>
+                        <!-- prod_name,product_desc,sap_module,sap_area,sap_subarea -->
+                            <Text text="{prod_name}" />
+                            <Text text="{product_desc}" />
+                            <Text text="{path: 'sap_module',formatter: '.formatSAPApplication'}" />
+                            <Text text="{sap_area}" />
+                            <Text text="{sap_subarea}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
             </Table>
         </smartTable:SmartTable>
     </Page>

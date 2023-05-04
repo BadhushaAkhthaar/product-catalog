@@ -1,11 +1,11 @@
-<mvc:View xmlns:f="sap.f"
-    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+<mvc:View xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:filterbar="sap.ui.comp.filterbar" controllerName="ui.controller.Detail"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns:core="sap.ui.core"
     xmlns="sap.uxap"
     xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
     xmlns:m="sap.m"
     xmlns:smartForm="sap.ui.comp.smartform"
     xmlns:smartField="sap.ui.comp.smartfield"
@@ -25,38 +25,103 @@
                     </m:FlexBox>
                 </snappedHeading>
                 <expandedContent>
-                    <m:GenericTag class="sstGenericTag" design="StatusIconHidden" status="Information" text="{sap_area}"/>
+                    <m:Text text="{product_desc}"/>
+                    <!-- <m:GenericTag class="sstGenericTag" design="StatusIconHidden" status="Information" text="{sap_area}"/> -->
                 </expandedContent>
                 <snappedContent>
-                    <m:GenericTag class="sstGenericTag" design="StatusIconHidden" status="Information" text="{sap_area}"/>
+                    <m:Text text="{product_desc}"/>
+                    <!-- <m:GenericTag class="sstGenericTag" design="StatusIconHidden" status="Information" text="{sap_area}"/> -->
                 </snappedContent>
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
         <headerContent>
-            <m:FlexBox wrap="Wrap">
-                <layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
-                    <m:Text text="{product_desc}"/>
-                </layout:HorizontalLayout>
+            <m:FlexBox wrap="Wrap" alignItems="Start" justifyContent="SpaceBetween">
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Text text="{sap_area}"/>
+                </layout:VerticalLayout>
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Text text="{sap_subarea}"/>
+                </layout:VerticalLayout>
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Text text="{path: 'sap_module',formatter: '.formatSAPApplication'}"/>
+                </layout:VerticalLayout>
             </m:FlexBox>
         </headerContent>
         <sections>
-            <ObjectPageSection titleUppercase="false" id="product-detail" title="Details">
+            <ObjectPageSection titleUppercase="false" id="product-detail">
                 <subSections>
                     <ObjectPageSubSection id="product-detail-s1">
                         <blocks>
-                            <smartForm:SmartForm id="smartForm">
-                                <smartForm:Group>
+                            <!-- <smartForm:SmartForm id="smartForm">
+                                <smartForm:Group label="Product Details">
                                     <smartForm:GroupElement>
-                                        <smartField:SmartField value="{sap_module}" />
+                                        <smartField:SmartField value="{path:'product_type',formatter:'.formatProuctType'}" />
                                     </smartForm:GroupElement>
                                     <smartForm:GroupElement >
-                                        <smartField:SmartField value="{sap_area}" />
+                                        <smartField:SmartField value="{deployment_type}" />
                                     </smartForm:GroupElement>
                                     <smartForm:GroupElement >
-                                        <smartField:SmartField value="{sap_subarea}" />
+                                        <smartField:SmartField value="{product_readiness}" />
                                     </smartForm:GroupElement>
                                 </smartForm:Group>
-                            </smartForm:SmartForm>
+                                <smartForm:Group label="Owner Ship">
+                                    <smartForm:GroupElement>
+                                        <smartField:SmartField value="{practice_owner}" />
+                                    </smartForm:GroupElement>
+                                    <smartForm:GroupElement >
+                                        <smartField:SmartField value="{product_owner}" />
+                                    </smartForm:GroupElement>
+                                </smartForm:Group>
+                                <smartForm:Group label="Pricing Details">
+                                    <smartForm:GroupElement>
+                                        <smartField:SmartField value="{pricing_plan}" />
+                                    </smartForm:GroupElement>
+                                    <smartForm:GroupElement >
+                                        <smartField:SmartField value="{product_cost} {prd_currency}" />
+                                    </smartForm:GroupElement>
+                                    <smartForm:GroupElement >
+                                        <smartField:SmartField value="{development_cost} {dev_currency}" />
+                                    </smartForm:GroupElement>
+                                </smartForm:Group>
+                            </smartForm:SmartForm> -->
+                            <f:SimpleForm id="simpleform" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                                <f:content>
+                                    <core:Title text="Product Details"/>
+                                    <m:Label text="Product Type" />
+                                    <m:Text text="{path:'product_type',formatter:'.formatProuctType'}" />
+                                    <m:Label text="Deployment Type" />
+                                    <m:Text text="{path:'deployment_type',formatter:'.formatDeploymentType'}" />
+                                    <m:Label text="Product Readiness" />
+                                    <m:Text text="{path: 'product_readiness',formatter:'.formatPrdRdy'}" />
+                                    <m:Label text="Product Status" />
+                                    <m:Text text="{parts: ['prj_status_assesment','prj_status_implementation','prj_status_design','prj_status_go_live','prj_status_post_imp'],formatter: '.formatProjStatus'}" />
+
+
+                                    <core:Title text="Owner Ship"/>
+                                    <m:Label text="Practice Owner" />
+                                    <m:Text text="{path: 'practice_owner',formatter:'.formatPrcOwner'}" />
+                                    <m:Label text="Product Owner" />
+                                    <m:Text text="{path: 'product_owner',formatter:'.formatPrdOwner'}" />
+
+
+                                    <core:Title text="Pricing Details"/>
+                                    <m:Label text="Pricing Plan" />
+                                    <m:Text text="{path:'pricing_plan',formatter:'.formatPricingPlan'}" />
+                                    <m:Label text="Product Cost" />
+                                    <m:Text text="{path:'product_cost',type: 'sap.ui.model.type.Float',formatOptions: {
+                                                                    maxFractionDigits: 2,
+                                                                    roundingMode: 'away_from_zero'
+                                                                }} {prd_currency}" />
+                                    <m:Label text="Development Cost" />
+                                    <m:Text text="{development_cost} {dev_currency}" />
+
+                                    <core:Title text="Other Details"/>
+                                    <m:Label text="Client List" />
+                                    <m:Text text="{client_list}" />
+                                    <m:Label text="Marketing Content" />
+                                    <m:Text text="Test" />
+                                </f:content>
+                            </f:SimpleForm >
                         </blocks>
                     </ObjectPageSubSection>
                 </subSections>

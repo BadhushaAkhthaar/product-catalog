@@ -31,6 +31,9 @@ sap.ui.define(
                         related_industry: {
                             selectedKeys: [],
                         },
+                        project_stage: {
+                            selectedKeys: []
+                        }
                     },
                 });
                 this.getView().setModel(oFiltersModel, this.routeName);
@@ -80,7 +83,7 @@ sap.ui.define(
                 let selectedKeysFilter = [];
                 let selectedKeys = this.getView()
                     .getModel(this.routeName)
-                    .getProperty(`/filters/related_industry/selectedKeys`);
+                    .getProperty(`/filters/${filter_key}/selectedKeys`);
                 console.log(selectedKeys);
                 selectedKeys.forEach((_key) => {
                     selectedKeysFilter.push(
@@ -137,10 +140,41 @@ sap.ui.define(
                 }
                 // this.byId("product-catalog").getBinding("items").filter(selectedKeysFilter);
             },
-            onSelect: function(oEvent){
-                let context = oEvent.getParameter("listItem").getBindingContext().getObject();
+            onSelect: function (oEvent) {
+                let context = oEvent.getSource().getBindingContext().getObject()
                 let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteDetail",{id: context["prod_id"]})
+                oRouter.navTo("RouteDetail", { id: context["prod_id"] })
+            },
+            formatSAPApplication: function (value) {
+                switch (value) {
+                    case "01":
+                        return "Analytics"
+                        break;
+                    case "02":
+                        return "BNL"
+                        break;
+                    case "03":
+                        return "BTP"
+                        break;
+                    case "04":
+                        return "EWM"
+                        break;
+                    case "05":
+                        return "GTS"
+                        break;
+                    case "06":
+                        return "IBP"
+                        break;
+                    case "07":
+                        return "Others"
+                        break;
+                    case "08":
+                        return "SCM"
+                        break;
+                    case "09":
+                        return "TM"
+                        break;
+                }
             }
         });
     }
