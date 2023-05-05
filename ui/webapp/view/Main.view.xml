@@ -8,6 +8,9 @@
     xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     xmlns:t="sap.ui.table">
     <Page id="page" title="{i18n>title}">
+        <headerContent>
+            <Image id="idCompanyLogo" height="100%" width="100%" alt="Archlynk Logo" src="assets/logo.png"/>
+        </headerContent>
         <smartfilterbar:SmartFilterBar id="smartfilterID" entitySet="xALKxPRD_CATALOG_SRV" initialized="onFilterBarInit" search="onSearch">
             <smartfilterbar:controlConfiguration>
                 <smartfilterbar:ControlConfiguration index="0" key="prod_name" label="Product Name" visibleInAdvancedArea="true">
@@ -110,7 +113,7 @@
                 </smartfilterbar:ControlConfiguration>
             </smartfilterbar:controlConfiguration>
         </smartfilterbar:SmartFilterBar>
-        <smartTable:SmartTable id="smartTable" entitySet="xALKxPRD_CATALOG_SRV" smartFilterId="smartfilterID" header="Products" showRowCount="true" enableAutoBinding="false" tableType="ResponsiveTable" requestAtLeastFields="prod_id,prod_name,product_desc,sap_module,sap_area,sap_subarea" >
+        <smartTable:SmartTable id="smartTable" entitySet="xALKxPRD_CATALOG_SRV" smartFilterId="smartfilterID" header="Products" showRowCount="true" enableAutoBinding="false" tableType="ResponsiveTable" requestAtLeastFields="prod_id,prod_name,product_desc,sap_module,sap_area,sap_subarea">
             <Table id="product-catalog" growing="true">
                 <columns>
                     <Column id="cprod_name">
@@ -119,25 +122,26 @@
                     <Column id="cprod_desc">
                         <Text text="Product Description" />
                     </Column>
-                    <Column id="csap_app">
-                        <Text text="SAP Application" />
-                    </Column>
                     <Column id="csap_process">
                         <Text text="Business Process" />
                     </Column>
                     <Column id="csub_process">
                         <Text text="Sub Process" />
+                    </Column>  
+                    <Column id="csap_app">
+                        <Text text="SAP Application" />
                     </Column>
                 </columns>
                 <items>
                     <ColumnListItem id="idWorkListItem" type="Navigation" press="onSelect">
                         <cells>
-                        <!-- prod_name,product_desc,sap_module,sap_area,sap_subarea -->
+                            <!-- prod_name,product_desc,sap_module,sap_area,sap_subarea -->
                             <Text text="{prod_name}" />
                             <Text text="{product_desc}" />
-                            <Text text="{path: 'sap_module',formatter: '.formatSAPApplication'}" />
+                            
                             <Text text="{sap_area}" />
                             <Text text="{sap_subarea}" />
+                            <Text text="{path: 'sap_module',formatter: '.formatSAPApplication'}" />
                         </cells>
                     </ColumnListItem>
                 </items>

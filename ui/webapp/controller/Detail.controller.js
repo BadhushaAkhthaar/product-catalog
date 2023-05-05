@@ -88,7 +88,7 @@ sap.ui.define(
                         break;
                 }
             },
-            formatPrdRdy: function(value){
+            formatPrdRdy: function (value) {
                 switch (value) {
                     case "CO":
                         return "Conceptual"
@@ -104,7 +104,7 @@ sap.ui.define(
                         break;
                 }
             },
-            formatPrdOwner: function(value){
+            formatPrdOwner: function (value) {
                 switch (value) {
                     case "AR":
                         return "Archlynk"
@@ -117,7 +117,7 @@ sap.ui.define(
                         break;
                 }
             },
-            formatPricingPlan: function(value){
+            formatPricingPlan: function (value) {
                 switch (value) {
                     case "01":
                         return "Custom Pricing"
@@ -139,9 +139,43 @@ sap.ui.define(
                         break;
                 }
             },
-            formatProjStatus: function (assess,impl,design,golive,postgo){
+            formatProjStatus: function (assess, impl, design, golive, postgo) {
                 let status = `${assess ? "Assesment," : ""}${impl ? "Implementation," : ""}${design ? "Design," : ""}${golive ? "Go-Live," : ""}${postgo ? "Post Go-Live" : ""}`;
                 return status;
+            },
+            formatProdStatus: function (value) {
+                switch (value) {
+                    case "01":
+                        return "Not Started"
+                        break;
+                    case "02":
+                        return "Pre-Sales/Market Review"
+                        break;
+                    case "03":
+                        return "Management Review"
+                        break;
+                    case "04":
+                        return "Estimation/Kimble Update"
+                        break;
+                    case "05":
+                        return "Design"
+                        break;
+                    case "06":
+                        return "Development"
+                        break;
+                    case "07":
+                        return "Testing"
+                        break;
+                    case "08":
+                        return "Documentation"
+                        break;
+                    case "09":
+                        return "Marketing Collateral"
+                        break;
+                    case "10":
+                        return "Live"
+                        break;
+                }
             },
             formatPrcOwner: function (value) {
                 switch (value) {
@@ -168,6 +202,12 @@ sap.ui.define(
                         break;
                 }
             },
+            formatCost: function (value) {
+                if (value) {
+                    return value * 10000;
+                }
+
+            }
         });
     }
 );

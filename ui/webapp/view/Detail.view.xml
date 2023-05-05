@@ -94,10 +94,10 @@
                                     <m:Label text="Product Readiness" />
                                     <m:Text text="{path: 'product_readiness',formatter:'.formatPrdRdy'}" />
                                     <m:Label text="Product Status" />
-                                    <m:Text text="{parts: ['prj_status_assesment','prj_status_implementation','prj_status_design','prj_status_go_live','prj_status_post_imp'],formatter: '.formatProjStatus'}" />
+                                    <m:Text text="{path: 'product_status',formatter: '.formatProdStatus'}" />
 
 
-                                    <core:Title text="Owner Ship"/>
+                                    <core:Title text="Ownership"/>
                                     <m:Label text="Practice Owner" />
                                     <m:Text text="{path: 'practice_owner',formatter:'.formatPrcOwner'}" />
                                     <m:Label text="Product Owner" />
@@ -108,18 +108,20 @@
                                     <m:Label text="Pricing Plan" />
                                     <m:Text text="{path:'pricing_plan',formatter:'.formatPricingPlan'}" />
                                     <m:Label text="Product Cost" />
-                                    <m:Text text="{path:'product_cost',type: 'sap.ui.model.type.Float',formatOptions: {
-                                                                    maxFractionDigits: 2,
-                                                                    roundingMode: 'away_from_zero'
-                                                                }} {prd_currency}" />
-                                    <m:Label text="Development Cost" />
-                                    <m:Text text="{development_cost} {dev_currency}" />
+                                    <m:Text text="{path:'product_cost',type: 'sap.ui.model.type.Float',formatOptions: {maxFractionDigits: 2},formatter:'.formatCost'} {prd_currency}" />
+                                    <m:Label text="T and M Cost" />
+                                    <m:Text text="{path:'development_cost',type: 'sap.ui.model.type.Float',formatOptions: {maxFractionDigits: 2},formatter:'.formatCost'} {dev_currency}" />
+                                    <m:Label text="Perceived Cost" />
+                                    <m:Text text="{path:'perceived_cost',type: 'sap.ui.model.type.Float',formatOptions: {maxFractionDigits: 2},formatter:'.formatCost'} {perceived_currency}" />
 
                                     <core:Title text="Other Details"/>
-                                    <m:Label text="Client List" />
+                                    <m:Label text="Active Customers" />
                                     <m:Text text="{client_list}" />
+                                    <m:Label text="Pipeline" />
+                                    <m:Text text="{client_pipeline}" />
+                                    
                                     <m:Label text="Marketing Content" />
-                                    <m:Text text="Test" />
+                                    <m:Link text="Link" href="{marketing_folder}" />
                                 </f:content>
                             </f:SimpleForm >
                         </blocks>

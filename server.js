@@ -5,11 +5,11 @@ const port = 4001;
 
 app.use('/product-catalog', express.static('ui/webapp'));
 
-app.use('/odata', createProxyMiddleware({
+app.use('/sap/opu/odata/ALK/PRD_CATALOG_SRV_CDS', createProxyMiddleware({
   target: 'http://saps4p.kryptinc.com:8001/',
   changeOrigin: true,
   pathRewrite: {
-    '^/odata': '/sap/opu/odata/ALK/PRD_CATALOG_SRV_CDS',
+    '^/sap/opu/odata/ALK/PRD_CATALOG_SRV_CDS': '/sap/opu/odata/ALK/PRD_CATALOG_SRV_CDS',
   }
 }));
 

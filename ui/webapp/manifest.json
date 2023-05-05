@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata",
+        "uri": "/sap/opu/odata/alk/PRD_CATALOG_SRV_CDS/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -70,9 +70,12 @@
         }
       },
       "": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
         "dataSource": "mainService",
         "preload": true,
         "settings": {
+          "disableHeadRequestForToken": true,
+					"tokenHandling": false,
           "useBatch": false
         }
       }
