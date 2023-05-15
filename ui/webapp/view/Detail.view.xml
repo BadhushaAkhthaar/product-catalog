@@ -121,7 +121,8 @@
                                     <m:Text text="{client_pipeline}" />
                                     
                                     <m:Label text="Marketing Content" />
-                                    <m:Link text="Link" href="{marketing_folder}" />
+                                    
+                                    <m:Link visible="{= ${marketing_folder} ? true : false}" text="Link" href="{path: 'marketing_folder',formatter: '.formatLink'}" target="_blank"/>
                                 </f:content>
                             </f:SimpleForm >
                         </blocks>

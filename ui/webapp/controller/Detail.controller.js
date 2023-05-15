@@ -14,6 +14,7 @@ sap.ui.define(
         return Controller.extend("ui.controller.Detail", {
             routeName: "detail",
             onInit: function () {
+                
                 let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.getRoute("RouteDetail").attachPatternMatched(this._onRouteMatched, this)
             },
@@ -24,6 +25,9 @@ sap.ui.define(
                     path: `/xALKxPRD_CATALOG_SRV('${prodId}')`
                 })
 
+            },
+            formatLink: function (value) {
+                return String(value);
             },
             formatSAPApplication: function (value) {
                 switch (value) {

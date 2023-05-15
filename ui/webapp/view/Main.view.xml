@@ -7,9 +7,12 @@
     xmlns="sap.m"
     xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     xmlns:t="sap.ui.table">
-    <Page id="page" title="{i18n>title}">
+    <f:ShellBar
+			title="{i18n>title}"
+            homeIcon="assets/logo.png"/>
+    <Page id="page" class="sapUiResponsivePadding--header" showHeader="false">
         <headerContent>
-            <Image id="idCompanyLogo" height="100%" width="100%" alt="Archlynk Logo" src="assets/logo.png"/>
+            <Image id="idCompanyLogo" width="100px" alt="Archlynk Logo" src="assets/logo.png"/>
         </headerContent>
         <smartfilterbar:SmartFilterBar id="smartfilterID" entitySet="xALKxPRD_CATALOG_SRV" initialized="onFilterBarInit" search="onSearch">
             <smartfilterbar:controlConfiguration>
