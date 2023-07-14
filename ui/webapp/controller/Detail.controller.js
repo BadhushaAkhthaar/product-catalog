@@ -204,6 +204,35 @@ sap.ui.define(
                     case "RO":
                         return "Rohan Saundattikar"
                         break;
+                    default:
+                        return value;
+                }
+            },
+            formatScndOwner: function (value) {
+                switch (value) {
+                    case "AN":
+                        return "Andrei Colonescu"
+                        break;
+                    case "BH":
+                        return "Bhushan Kale"
+                        break;
+                    case "HA":
+                        return "Hariharan Subramanian"
+                        break;
+                    case "LU":
+                        return "Luis Gomez"
+                        break;
+                    case "MO":
+                        return "Mouli Venkataraman"
+                        break;
+                    case "PA":
+                        return "Pankaj Diwan"
+                        break;
+                    case "RO":
+                        return "Rohan Saundattikar"
+                        break;
+                    default:
+                        return value;
                 }
             },
             formatCost: function (value) {

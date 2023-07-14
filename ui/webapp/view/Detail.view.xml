@@ -100,6 +100,8 @@
                                     <core:Title text="Ownership"/>
                                     <m:Label text="Practice Owner" />
                                     <m:Text text="{path: 'practice_owner',formatter:'.formatPrcOwner'}" />
+                                    <m:Label text="Secondary Owner" />
+                                    <m:Text text="{path: 'secondary_owner',formatter:'.formatScndOwner'}" />
                                     <m:Label text="Product Owner" />
                                     <m:Text text="{path: 'product_owner',formatter:'.formatPrdOwner'}" />
 
@@ -123,6 +125,9 @@
                                     <m:Label text="Marketing Content" />
                                     
                                     <m:Link visible="{= ${marketing_folder} ? true : false}" text="Link" href="{path: 'marketing_folder',formatter: '.formatLink'}" target="_blank"/>
+                                    
+                                    <m:Label text="Tech Content" />
+                                    <m:Link visible="{= ${tech_folder} ? true : false}" text="Link" href="{path: 'tech_folder',formatter: '.formatLink'}" target="_blank"/>
                                 </f:content>
                             </f:SimpleForm >
                         </blocks>
